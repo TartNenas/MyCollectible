@@ -6,18 +6,33 @@ const supabase = supabase.createClient(
 // Signup functionality
 const signupForm = document.getElementById("signup-form");
 if (signupForm) {
+  console.log("✅ Signup form detected!");
+
   signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const { error } = await supabase.auth.signUp({ email, password });
-    if (error) {
-      alert("Signup failed: " + error.message);
-    } else {
-      alert("Signup successful! Please check your email for confirmation.");
+    console.log("🔑 Email:", email);
+    console.log("🔒 Password:", password);
+
+    try {
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        console.error("❌ Signup Error:", error.message);
+        alert("Signup failed: " + error.message);
+      } else {
+        console.log("✅ Signup successful!");
+        alert("Signup successful! Please check your email for confirmation.");
+      }
+    } catch (err) {
+      console.error("❗Unexpected Error:", err);
+      alert("An unexpected error occurred. Please try again.");
     }
   });
+} else {
+  console.error("❌ Signup form not found in the DOM!");
 }
 
 // Login functionality
