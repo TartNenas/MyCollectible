@@ -13,8 +13,8 @@ if (signupForm) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("🔑 Email:", email);
-    console.log("🔒 Password:", password);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
     try {
       let { data, error } = await supabase.auth.signUp({
@@ -47,8 +47,8 @@ if (loginForm) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("🔑 Email:", email);
-    console.log("🔒 Password:", password);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
     try {
       // Authenticate with Supabase Auth
